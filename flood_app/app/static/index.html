@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flood Monitor</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div class="brand">
+        <div class="dot"></div>
+        <div>
+          <h1>Flood Monitor</h1>
+          <p class="sub">Rule-based drain level monitoring</p>
+        </div>
+      </div>
+      <div class="status-pill" id="lastUpdated">—</div>
+    </header>
+
+    <section class="alert-banner" id="alertBanner">
+      <div class="alert-title" id="alertLevel">Loading…</div>
+      <div class="alert-reason" id="alertReason">Fetching latest status</div>
+    </section>
+
+    <section class="metrics">
+      <div class="card">
+        <div class="card-title">Current Water Level</div>
+        <div class="metric">
+          <span class="metric-value" id="waterLevel">—</span>
+          <span class="metric-unit">cm</span>
+        </div>
+        <div class="hint" id="thresholdHint">Thresholds: —</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Water Rise Rate</div>
+        <div class="metric">
+          <span class="metric-value" id="riseRate">—</span>
+          <span class="metric-unit">cm/min</span>
+        </div>
+        <div class="hint" id="systemHint">System: —</div>
+      </div>
+    </section>
+
+    <!-- Dashboard section: same container + placeholder styling -->
+    <section class="dashboard">
+      <div class="dashboard-header">
+        <h2>Dashboard</h2>
+        <p>Reserved space for charts, trends and event history (coming later)</p>
+      </div>
+      <div class="dashboard-scroll">
+        <div class="placeholder">
+          <div class="placeholder-icon">📈</div>
+          <div style="width:100%">
+            <div class="placeholder-title">Water level trend (live)</div>
+            <div class="placeholder-sub">With warning & danger thresholds.</div>
+            <div class="chart-wrap"><canvas id="levelChart"></canvas></div>
+          </div>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <div class="placeholder">
+          <div class="placeholder-icon">📉</div>
+          <div style="width:100%">
+            <div class="placeholder-title">Rise rate trend (live)</div>
+            <div class="placeholder-sub">cm/min computed from latest readings.</div>
+            <div class="chart-wrap"><canvas id="rateChart"></canvas></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>JSON API: <code>/api/status</code></span>
+      <span class="sep">•</span>
+      <span>Config: <code>/api/config</code></span>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

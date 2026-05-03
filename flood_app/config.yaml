@@ -1,0 +1,24 @@
+data_source:
+  type: "csv"
+  csv:
+    path: "data/sample_readings.csv"
+
+system:
+  sensor_height_cm: 16
+  drain_height_cm: 14
+
+thresholds:
+  warning_cm: null
+  danger_cm: null
+
+rise_rate:
+  medium_cm_per_min: 0.5
+  high_cm_per_min: 1.0
+
+polling:
+  interval_seconds: 1
+  lookback_points: 120
+
+timestamp:
+  format: "elapsed_ms"
+  base_date: "today"
